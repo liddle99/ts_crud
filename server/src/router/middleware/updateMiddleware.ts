@@ -1,0 +1,20 @@
+import db from "../../config/db";
+
+const middlewareCreate = (req: any, res: any) => {
+    const title = req.body.title;
+    const content = req.body.content;
+    const category = req.body.category;
+    const idx = req.body.idx;
+    const sqlQuery =
+        "update teamboard set title=?, content=?, category=? where idx=?";
+    db.query(
+        sqlQuery,
+        [title, content, category, idx],
+        (err: any, result: any) => {
+            console.log(req.body);
+            res.send("sex made");
+        }
+    );
+};
+
+export default middlewareCreate;

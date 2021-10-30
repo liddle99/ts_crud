@@ -1,0 +1,66 @@
+@font-face {
+    font-family: "nanumFont";
+    src: url("../../font/nanumFont/NanumSquareL.ttf") format("truetype");
+}
+@font-face {
+    font-family: "firaMono";
+    src: url("../../font/Fira_Mono/FiraMono-Medium.ttf") format("truetype");
+    font-weight: normal;
+}
+
+body,
+head {
+    background-color: ghostwhite;
+}
+
+.read-title {
+    background-color: white;
+    width: 700px;
+    height: 80px;
+    line-height: 80px;
+    box-shadow: 1px 1px 5px grey;
+    padding-left: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+    text-align: left;
+    font-family: "nanumFont";
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.read-content {
+    width: 700px;
+    height: 450px;
+    box-shadow: 1px 1px 5px grey;
+    padding-left: 30px;
+    padding-top: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+    background-color: white;
+    font-family: "nanumFont";
+}
+.tieBox button {
+    border: 0;
+    background: none;
+    margin-right: 30px;
+    font-size: 20px;
+    font-family: "firaMono";
+}
+.tieBox {
+    width: 730px;
+    height: 50px;
+    margin-left: 30px;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow: 1px 1px 5px grey;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.tieBox a {
+    text-decoration: none;
+    color: black;
+    margin-right: 30px;
+    font-size: 20px;
+    font-family: "firaMono";
+}
