@@ -22,7 +22,6 @@ const Teamboard = (params: { category: string }) => {
         title: "",
         content: "",
     });
-
     const getData = (e: ChangeValue) => {
         const { value, name } = e.target;
         const tmp = { ...boardContent, [name]: value };
@@ -31,11 +30,25 @@ const Teamboard = (params: { category: string }) => {
     };
 
     const createValue = async () => {
-        await Axios.post("http://localhost:5000/api/insert", {
-            category: params.category,
-            title: boardContent.title,
-            content: boardContent.content,
-        })
+        const token: string | null = localStorage.getItem("accessToken");
+
+        if (token === null) {
+            return false;
+        }
+        console.log(localStorage.getItem("token"));
+        await Axios.post(
+            "http://localhost:5000/api/insert",
+            {
+                category: params.category,
+                title: boardContent.title,
+                content: boardContent.content,
+            },
+            {
+                headers: {
+                    token: token,
+                },
+            }
+        )
             .then((res) => {
                 alert("등록 완료!");
                 console.log(res);
@@ -43,9 +56,8 @@ const Teamboard = (params: { category: string }) => {
             .catch((error) => {
                 console.log(error);
             });
-        history.push("/");
+        history.push("/main");
     };
-
     return (
         <>
             <Input getData={getData} />

@@ -8,12 +8,24 @@ import ContentView from "../../component/main/contentView";
 const Main = () => {
     const [readContent, setReadContent] = useState<Content[]>([]);
     const [viewContent, setViewContent] = useState<Content[]>([]);
+    const token: string | null = localStorage.getItem("accessToken");
+
     useEffect(() => {
-        Axios.get("http://localhost:5000/api/read").then((response: IProps) => {
-            const tmp: Content[] = readContent.concat(response.data);
-            setReadContent(tmp);
-            setViewContent(tmp);
-        });
+        const test = async () => {
+            if (token === null) {
+                return await false;
+            }
+            Axios.get("http://localhost:5000/api/read", {
+                headers: {
+                    token: token,
+                },
+            }).then((response: IProps) => {
+                const tmp: Content[] = readContent.concat(response.data);
+                setReadContent(tmp);
+                setViewContent(tmp);
+            });
+        };
+        test();
     }, []);
 
     const handleCategory = (e: any) => {
@@ -21,7 +33,6 @@ const Main = () => {
         setViewContent(
             readContent.filter((element) => element.category === value)
         );
-        console.log(readContent);
     };
 
     return (

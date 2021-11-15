@@ -7,17 +7,20 @@ interface IIndex {
 
 const DeleteContainer = (params: IIndex) => {
     const history = useHistory();
-    console.log(params.idx);
     const deleteButton = async () => {
         const tmp = params.idx;
         await axios
-            .post("http://localhost:5000/api/delete", {
-                idx: tmp,
-            })
+            .post(
+                "http://localhost:5000/api/delete",
+                {
+                    idx: tmp,
+                },
+                
+            )
             .then((res) => {
                 alert("Delete Success");
             });
-        history.push("/");
+        history.push("/main");
     };
 
     return (

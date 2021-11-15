@@ -4,7 +4,7 @@ import SelectBox from "./selectBox";
 function Create() {
     return (
         <div>
-             <SelectBox></SelectBox>
+            <SelectBox></SelectBox>
         </div>
     );
 }

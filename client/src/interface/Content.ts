@@ -15,3 +15,8 @@ export interface IProps {
 export interface IData {
     data: Content[];
 }
+export interface IUser {
+    userEmail: string;
+    password: string;
+    name: string;
+}

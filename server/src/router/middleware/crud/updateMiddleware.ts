@@ -1,6 +1,7 @@
-import db from "../../config/db";
+import db from "../../../config/db";
+import { Request, Response } from "express";
 
-const middlewareCreate = (req: any, res: any) => {
+const middlewareCreate = (req: Request, res: Response) => {
     const title = req.body.title;
     const content = req.body.content;
     const category = req.body.category;
@@ -10,9 +11,9 @@ const middlewareCreate = (req: any, res: any) => {
     db.query(
         sqlQuery,
         [title, content, category, idx],
-        (err: any, result: any) => {
-            console.log(req.body);
-            res.send("sex made");
+        (err: string, result: string) => {
+            console.log(req.body.idx);
+            res.send("success");
         }
     );
 };

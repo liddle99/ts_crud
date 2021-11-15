@@ -1,10 +1,6 @@
 const mysql = require("mysql");
+import config from "./config";
 
-const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "0312",
-    database: "teamboard",
-});
+const connection = mysql.createPool(config.users);
 
-export default db;
+export default connection;

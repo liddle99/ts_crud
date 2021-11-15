@@ -6,7 +6,6 @@ const SelectComponent = (params: any) => {
             <select
                 className="selectCategory"
                 name="category"
-                id=""
                 onChange={params.select}
             >
                 <option value="todo">todo</option>
