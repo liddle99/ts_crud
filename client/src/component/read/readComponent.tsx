@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import DeleteContainer from "../../container/delete/deleteContainer";
 import "../css/read.css";
 
-const ReadComponent = (params: any) => {
+interface IProps {
+    title: string,
+    content: string,
+    idx: string
+}
+
+const ReadComponent = (params: IProps) => {
     return (
         <div>
             <div className="read-title">{params.title}</div>

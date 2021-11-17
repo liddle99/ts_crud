@@ -10,13 +10,9 @@ const DeleteContainer = (params: IIndex) => {
     const deleteButton = async () => {
         const tmp = params.idx;
         await axios
-            .post(
-                "http://localhost:5000/api/delete",
-                {
-                    idx: tmp,
-                },
-                
-            )
+            .post("http://localhost:5000/api/delete", {
+                idx: tmp,
+            })
             .then((res) => {
                 alert("Delete Success");
             });

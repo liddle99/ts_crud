@@ -1,36 +1,36 @@
 import "../css/main.css";
+interface IProps {
+    handleClick(value: string): void;
+}
 
-export default function categoryButton(params: any) {
+const categoryButton = (params: IProps) => {
     return (
         <div className="categoryButton">
             <button
                 className="todoButton"
-                onClick={params.handleClick}
-                value="todo"
+                onClick={() => params.handleClick("todo")}
             >
                 todo
             </button>
             <button
                 className="diaryButton"
-                onClick={params.handleClick}
-                value="diary"
+                onClick={() => params.handleClick("diary")}
             >
                 diary
             </button>
             <button
                 className="noteButton"
-                onClick={params.handleClick}
-                value="note"
+                onClick={() => params.handleClick("note")}
             >
                 note
             </button>
             <button
                 className="studyButton"
-                onClick={params.handleClick}
-                value="study"
+                onClick={() => params.handleClick("study")}
             >
                 study
             </button>
         </div>
     );
-}
+};
+export default categoryButton;

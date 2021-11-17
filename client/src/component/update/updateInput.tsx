@@ -1,7 +1,14 @@
 import "../css/update.css";
+import { ChangeValue } from "../../interface/Content";
 
-const updateInput = (params: any) => {
-    console.log(params);
+interface IProps {
+    getValue(e: ChangeValue): void;
+    title: string;
+    content: string;
+    updateValue(): void;
+}
+
+const updateInput = (params: IProps) => {
     return (
         <div>
             <input

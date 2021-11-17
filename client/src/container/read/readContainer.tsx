@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IData } from "../../interface/Content";
 import ReadComponent from "../../component/read/readComponent";
+import { RouteComponentProps } from "react-router";
 
-const ReadContainer = (data: any) => {
+interface ITest {
+    id: string;
+}
+const ReadContainer = ({ match }: RouteComponentProps<ITest>) => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const idx = data.match.params.id;
+    const idx = match.params.id;
     const token: string | null = localStorage.getItem("token");
 
     useEffect(() => {

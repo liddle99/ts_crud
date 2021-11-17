@@ -1,7 +1,7 @@
 export interface Content {
     title: string;
     content: string;
-    idx: number;
+    idx: string;
     category: string;
 }
 export interface IValue {
@@ -19,4 +19,10 @@ export interface IUser {
     userEmail: string;
     password: string;
     name: string;
+}
+export interface ChangeValue {
+    target: {
+        value: string;
+        name: string;
+    };
 }

@@ -26,10 +26,9 @@ const Main = () => {
             });
         };
         test();
-    }, []);
+    }, [token]);
 
-    const handleCategory = (e: any) => {
-        const { value } = e.target;
+    const handleCategory = (value: string) => {
         setViewContent(
             readContent.filter((element) => element.category === value)
         );

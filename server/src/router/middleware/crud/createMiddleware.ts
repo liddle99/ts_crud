@@ -13,7 +13,6 @@ const middlewareCreate = (req: Request, res: Response) => {
         sqlQuery,
         [title, content, category],
         (err: string, result: string) => {
-            
             res.send("success");
         }
     );

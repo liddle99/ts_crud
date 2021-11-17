@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
+import SignIn from "../../../component/login/login/signIn";
+import { ChangeValue } from "../../../interface/Content";
 
-interface ChangeValue {
-    target: {
-        value: string;
-        name: string;
-    };
-}
 interface IData {
     userEmail: string;
     password: string;
@@ -38,8 +34,6 @@ const LoginContainer = () => {
                 })
                 .then((res: any) => {
                     alert("login success");
-                    console.log(res.data.data.token.accessToken);
-                    console.log(res.data.data.token.refreshToken);
                     localStorage.setItem(
                         "accessToken",
                         res.data.data.token.accessToken
@@ -57,9 +51,7 @@ const LoginContainer = () => {
     };
     return (
         <div>
-            <input type="text" name="userEmail" onChange={getValue} />
-            <input type="text" name="password" onChange={getValue} />
-            <button onClick={handleClick}>Login</button>
+            <SignIn getValue={getValue} handleClick={handleClick}></SignIn>
         </div>
     );
 };

@@ -3,7 +3,6 @@ import { useState } from "react";
 import SelectComponent from "../../component/create/selectComponent";
 import { IValue } from "../../interface/Content";
 
-
 const SelectBox = () => {
     const [selectContent, setSelectContent] = useState("todo");
 

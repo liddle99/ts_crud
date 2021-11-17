@@ -1,6 +1,11 @@
 import "../css/create.css";
+import { ChangeValue } from "../../interface/Content";
 
-const input = ({ getData }: any) => {
+interface IProps {
+    getData(e: ChangeValue): void;
+}
+
+const input = ({ getData }: IProps) => {
     return (
         <div>
             <input
@@ -18,5 +23,5 @@ const input = ({ getData }: any) => {
             />
         </div>
     );
-}
+};
 export default input;

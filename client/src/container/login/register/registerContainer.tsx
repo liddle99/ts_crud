@@ -1,13 +1,8 @@
 import { IUser } from "../../../interface/Content";
 import { useState } from "react";
 import axios from "axios";
-
-interface ChangeValue {
-    target: {
-        value: string;
-        name: string;
-    };
-}
+import SignUp from "../../../component/login/register/signUp";
+import { ChangeValue } from "../../../interface/Content";
 
 const RegisterContainer = () => {
     const [userData, setUserData] = useState<IUser>({
@@ -46,25 +41,7 @@ const RegisterContainer = () => {
     };
     return (
         <div>
-            <input
-                type="text"
-                placeholder="ID"
-                name="userEmail"
-                onChange={getValue}
-            />
-            <input
-                type="text"
-                placeholder="password"
-                name="password"
-                onChange={getValue}
-            />
-            <input
-                type="text"
-                placeholder="name"
-                name="name"
-                onChange={getValue}
-            />
-            <button onClick={handleClick}>signup</button>
+            <SignUp getValue={getValue} handleClick={handleClick}></SignUp>
         </div>
     );
 };

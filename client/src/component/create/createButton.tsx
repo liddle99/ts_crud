@@ -1,9 +1,15 @@
-import "../css/create.css"
+import "../css/create.css";
 
-export default function CreateButton(params: any) {
+interface IProps {
+    write(): void;
+    children: string;
+}
+
+const CreateButton = (params: IProps) => {
     return (
         <button className="createButton" onClick={params.write}>
             write
         </button>
     );
-}
+};
+export default CreateButton;

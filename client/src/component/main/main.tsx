@@ -1,7 +1,7 @@
 import "../css/main.css";
 import { Link } from "react-router-dom";
 
-export default function main(chlidren: any) {
+const main = () => {
     return (
         <h2 className="headBox">
             <span>나만쓰는 게시판</span>
@@ -10,4 +10,5 @@ export default function main(chlidren: any) {
             </Link>
         </h2>
     );
-}
+};
+export default main;

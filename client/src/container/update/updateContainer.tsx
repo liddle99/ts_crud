@@ -4,6 +4,7 @@ import { Content, IData } from "../../interface/Content";
 import { useHistory } from "react-router-dom";
 import UpdateInput from "../../component/update/updateInput";
 import SelectComponent from "../../component/update/updateCategory";
+import { RouteComponentProps } from "react-router";
 
 interface ChangeValue {
     target: {
@@ -11,14 +12,17 @@ interface ChangeValue {
         name: string;
     };
 }
+interface IIdx {
+    idx: string;
+}
 
-const UpdateContainer = (data: any) => {
+const UpdateContainer = ({ match }: RouteComponentProps<IIdx>) => {
     const history = useHistory();
-    const idx = data.match.params.idx;
+    const idx = match.params.idx;
     const [board, setBoard] = useState<Content>({
         title: "",
         content: "",
-        idx: 0,
+        idx: "",
         category: "",
     });
     const token: string | null = localStorage.getItem("token");
@@ -46,22 +50,27 @@ const UpdateContainer = (data: any) => {
         const { value, name } = e.target;
         const tmp = { ...board, [name]: value, idx: idx };
         setBoard(tmp);
+        console.log(board.title);
     };
     const updateValue = async () => {
-        await Axios.post("http://localhost:5000/api/update", {
-            title: board.title,
-            content: board.content,
-            idx: board.idx,
-            category: board.category,
-        })
-            .then((res) => {
-                alert("Update success");
-                console.log(res);
+        if (board.title !== '') {
+            await Axios.post("http://localhost:5000/api/update", {
+                title: board.title,
+                content: board.content,
+                idx: board.idx,
+                category: board.category,
             })
-            .catch((error) => {
-                console.log(error);
-            });
-        history.push("/main");
+                .then((res) => {
+                    alert("Update success");
+                    console.log(res);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            history.push("/main");
+        } else {
+            alert("제목을 입력하세요");
+        }
     };
     return (
         <div>

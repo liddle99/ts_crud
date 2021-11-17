@@ -35,28 +35,31 @@ const Teamboard = (params: { category: string }) => {
         if (token === null) {
             return false;
         }
-        console.log(localStorage.getItem("token"));
-        await Axios.post(
-            "http://localhost:5000/api/insert",
-            {
-                category: params.category,
-                title: boardContent.title,
-                content: boardContent.content,
-            },
-            {
-                headers: {
-                    token: token,
+        if (boardContent.title !== "") {
+            await Axios.post(
+                "http://localhost:5000/api/insert",
+                {
+                    category: params.category,
+                    title: boardContent.title,
+                    content: boardContent.content,
                 },
-            }
-        )
-            .then((res) => {
-                alert("등록 완료!");
-                console.log(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        history.push("/main");
+                {
+                    headers: {
+                        token: token,
+                    },
+                }
+            )
+                .then((res) => {
+                    alert("success!");
+                    console.log(res);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            history.push("/main");
+        } else {
+            alert("제목을 입력하세요.");
+        }
     };
     return (
         <>
